@@ -34,7 +34,12 @@
         </div>
     </div>
 
-    <script src="auth.js"></script>
+    <!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<script src="auth.js"></script>
     <script>
         document.getElementById('login-form').addEventListener('submit', (e) => {
             e.preventDefault();

@@ -217,7 +217,19 @@ body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hi
 }
 
 @media (max-width: 600px) {
-    .search-form { display: none; }
+    /* ... kode responsive lainnya ... */
+
+    /* UBAH BAGIAN INI */
+    .search-form { 
+        display: flex; 
+        margin-top: 10px; 
+        width: 100%; 
+    }
+    .topbar { 
+        flex-wrap: wrap; 
+        gap: 10px; 
+    }
+    
     .hero-section { height: 250px; }
     .hero-overlay { padding: 20px; background: linear-gradient(to top, rgba(11,9,20,1) 0%, transparent 100%); }
     .hero-title { font-size: 1.5rem; }
@@ -226,4 +238,5 @@ body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hi
     .anime-card img { height: 180px; }
     .filter-bar select { flex: 1; }
     .filter-btn { width: 100%; margin-left: 0; }
+}
         }

@@ -8,6 +8,17 @@ function extractServers(data) {
         list.push({ name: "Default Server", url: streamUrl });
     }
 
+    // Di dalam function playServer(index) setelah iframe di-render:
+const historyItem = {
+    slug: slug,
+    animeName: animeName || "Anime",
+    episodeTitle: currentData?.title || currentData?.episode || "Episode",
+    poster: getQueryParam("poster") || "https://via.placeholder.com/200x280",
+    seriesSlug: getQueryParam("series") || ""
+};
+saveHistory(historyItem);
+    }
+
     // Fallback kalau ada multi-server
     const multiServer = data.servers || details.servers || [];
     if (Array.isArray(multiServer)) {

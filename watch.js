@@ -1,32 +1,21 @@
-const slug = getQueryParam("slug");
-const animeName = getQueryParam("anime") || "";
-const posterUrl = getQueryParam("poster") || "";
-const seriesSlug = getQueryParam("series") || "";
+function extractServers(data) {
+    const list = [];
+    // Ambil dari nested details
+    const details = data.details || data.detail || data;
+    const streamUrl = details.streamingUrl || details.streamUrl || details.iframeUrl || "";
 
-// ... (kode atas sama kayak sebelumnya) ...
+    if (streamUrl) {
+        list.push({ name: "Default Server", url: streamUrl });
+    }
 
-function playServer(index) {
-    const server = servers[index];
-    if (!server || !server.url) return;
-
-    let embedUrl = server.url;
-    if (embedUrl.startsWith("//")) embedUrl = "https:" + embedUrl;
-
-    playerContainer.innerHTML = `
-        <iframe src="${embedUrl}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-forms"></iframe>
-    `;
-
-    // SIMPAN KE HISTORY SAAT VIDEO DIPUTAR
-    const historyItem = {
-        slug: slug,
-        animeName: animeName || "Anime",
-        episodeTitle: currentData?.title || currentData?.episode || "Episode",
-        poster: posterUrl,
-        seriesSlug: seriesSlug
-    };
-    saveHistory(historyItem);
+    // Fallback kalau ada multi-server
+    const multiServer = data.servers || details.servers || [];
+    if (Array.isArray(multiServer)) {
+        multiServer.forEach(s => {
+            const name = s.name || s.server || "Server";
+            const url = s.url || s.iframeUrl || s.streamUrl || "";
+            if (url) list.push({ name, url });
+        });
+    }
+    return list;
 }
-
-// ... (sisa kode watch.js sama aja, cuma pastiin di renderEpisodeNav pass poster & series)
-// Contoh di renderEpisodeNav:
-// a.href = `watch.html?slug=${...}&anime=${...}&poster=${...}&series=${...}`;

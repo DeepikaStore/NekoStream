@@ -273,6 +273,38 @@ body {
     gap: 16px;
 }
 
+/* TOMBOL LOVE */
+.heart-btn {
+    position: absolute; top: 10px; right: 10px; z-index: 5;
+    background: rgba(0,0,0,0.6); border: none; border-radius: 50%;
+    width: 30px; height: 30px; cursor: pointer; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.5; transition: 0.2s; backdrop-filter: blur(4px);
+}
+.heart-btn:hover { transform: scale(1.1); opacity: 1; }
+.heart-btn.active { opacity: 1; background: rgba(230, 57, 70, 0.2); }
+
+/* TOP 10 LAYOUT */
+.top10-list { display: flex; flex-direction: column; gap: 12px; }
+.top10-item {
+    display: flex; align-items: center; gap: 16px; background: var(--bg-card);
+    padding: 12px; border-radius: var(--radius-md); cursor: pointer; transition: 0.2s;
+}
+.top10-item:hover { background: var(--bg-hover); transform: translateX(5px); }
+.top10-rank { font-size: 2rem; font-weight: 800; color: var(--primary); min-width: 50px; text-align: center; }
+.top10-img { width: 60px; height: 80px; object-fit: cover; border-radius: 6px; }
+.top10-info h3 { font-size: 1rem; margin-bottom: 4px; }
+.top10-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+/* JADWAL LAYOUT */
+.schedule-day { margin-bottom: 30px; }
+.schedule-day h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.2rem; text-transform: capitalize; }
+.schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+
+/* EMPTY STATE */
+.empty-state { text-align: center; padding: 50px 20px; color: var(--text-muted); }
+.empty-state h3 { margin-bottom: 10px; color: var(--text-main); }
+
 /* SKELETON LOADING */
 .skeleton {
     background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-hover) 50%, var(--bg-card) 75%);

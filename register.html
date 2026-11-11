@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - NekoStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Buat Akun</h1>
+            <p>Gabung bareng NekoStream sekarang.</p>
+        </div>
+        
+        <form id="register-form">
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="reg-username" required placeholder="Pilih username...">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="reg-password" required placeholder="Buat password...">
+            </div>
+            <div id="reg-message" class="auth-message"></div>
+            <button type="submit" class="auth-btn">Daftar Sekarang</button>
+        </form>
+
+        <div class="auth-footer">
+            Udah punya akun? <a href="login.html">Masuk di sini</a>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+            const msgEl = document.getElementById('reg-message');
+
+            const result = registerUser(username, password);
+            
+            if (result.success) {
+                msgEl.style.color = '#4CAF50';
+                msgEl.textContent = result.message;
+                document.getElementById('register-form').reset();
+                setTimeout(() => window.location.href = 'login.html', 1500);
+            } else {
+                msgEl.style.color = '#E63946';
+                msgEl.textContent = result.message;
+            }
+        });
+    </script>
+</body>
+</html>

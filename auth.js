@@ -22,7 +22,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 
 // Fungsi Login Google
 function loginWithGoogle() {
-  auth.signInWithPopup(provider)
+  auth.signInWithRedirect(provider)
     .then((result) => {
       const user = result.user;
       localStorage.setItem('neko_session', JSON.stringify({
@@ -98,6 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
             loginWithGoogle();
         });
     }
+});
+
+// Tambahkan di paling bawah Auth.js
+auth.getRedirectResult().then((result) => {
+  if (result.user) {
+    const user = result.user;
+    localStorage.setItem('neko_session', JSON.stringify({
+        username: user.displayName || user.email,
+        email: user.email,
+        photoURL: user.photoURL,
+        uid: user.uid,
+        loginAt: Date.now()
+    }));
+    window.location.href = 'index.html';
+  }
+}).catch((error) => {
+  console.error("Redirect Error:", error);
 });
 
 

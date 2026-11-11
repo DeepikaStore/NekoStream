@@ -21,6 +21,7 @@ async function loadDetail() {
 }
 
 function renderDetail(data) {
+    // 1. Ambil data anime (handle berbagai format API)
     const anime = data.anime || data.details || data;
     const title = anime.title || anime.seriesName || anime.name || "Tanpa Judul";
     const poster = anime.poster || anime.image || "https://via.placeholder.com/240x340?text=No+Image";
@@ -31,48 +32,55 @@ function renderDetail(data) {
     const studios = anime.studios || anime.studio || "-";
     const released = anime.released || anime.aired || anime.releaseDate || "-";
 
+    // 2. Handle Genre (Biar nggak muncul [object Object])
     let genres = anime.genres || anime.genreList || anime.genre || [];
-if (typeof genres === "string") genres = genres.split(",").map(g => g.trim());
-if (!Array.isArray(genres)) genres = [];
+    if (typeof genres === "string") genres = genres.split(",").map(g => g.trim());
+    if (!Array.isArray(genres)) genres = [];
 
-const genreHtml = genres.map(g => {
-    // Handle kalau datanya object (misal: {name: "Action", id: 1})
-    let name = "-";
-    if (typeof g === "string") {
-        name = g;
-    } else if (typeof g === "object" && g !== null) {
-        name = g.name || g.title || g.genre || "-";
-    }
-    return `<span>${name}</span>`;
-}).join("") || "<span>-</span>";
+    const genreHtml = genres.map(g => {
+        let name = "-";
+        if (typeof g === "string") name = g;
+        else if (typeof g === "object" && g !== null) name = g.name || g.title || "-";
+        return `<span>${name}</span>`;
+    }).join("") || "<span>-</span>";
 
+    // 3. Ambil List Episode
     let episodes = anime.episodes || anime.episodeList || anime.episode_list || [];
     if (!Array.isArray(episodes)) episodes = [];
 
+    // 4. Render HTML Utama (Grid Kiri Kanan)
     detailEl.innerHTML = `
         <img src="${poster}" alt="${title}" referrerpolicy="no-referrer" onerror="this.src='https://via.placeholder.com/240x340?text=No+Image'">
         <div class="info">
             <h2>${title}</h2>
-            <p><span class="label">Tipe:</span> ${type}</p>
-            <p><span class="label">Status:</span> ${status}</p>
-            <p><span class="label">Score:</span> ${score}</p>
-            <p><span class="label">Studio:</span> ${studios}</p>
-            <p><span class="label">Rilis:</span> ${released}</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                <p><span class="label">Tipe:</span> ${type}</p>
+                <p><span class="label">Status:</span> ${status}</p>
+                <p><span class="label">Score:</span> ${score}</p>
+                <p><span class="label">Studio:</span> ${studios}</p>
+                <p><span class="label">Rilis:</span> ${released}</p>
+            </div>
             <div class="genres">${genreHtml}</div>
             <p class="synopsis">${synopsis}</p>
         </div>
     `;
 
+    // 5. Render Daftar Episode
     if (episodes.length > 0) {
         const episodeHtml = episodes.map(ep => {
             const epSlug = ep.slug || ep.episodeId || ep.id || extractSlugFromUrl(ep.href || ep.link || ep.url || "");
             const epTitle = ep.title || ep.name || ep.episode || "Episode";
-            return `<a class="episode-item" href="watch.html?slug=${encodeURIComponent(epSlug)}&anime=${encodeURIComponent(title)}">${epTitle}</a>`;
+            // Bawa parameter poster & series biar masuk history
+            return `<a class="episode-item" href="watch.html?slug=${encodeURIComponent(epSlug)}&anime=${encodeURIComponent(title)}&poster=${encodeURIComponent(poster)}&series=${encodeURIComponent(slug)}">${epTitle}</a>`;
         }).join("");
 
         const epSection = document.createElement("div");
-        epSection.innerHTML = `<h2 style="margin-top:30px;color:#e94560;">📺 Daftar Episode</h2><div class="episode-list">${episodeHtml}</div>`;
-        document.querySelector("main").appendChild(epSection);
+        epSection.style.marginTop = "30px";
+        epSection.innerHTML = `
+            <h2 style="color:#e94560; margin-bottom: 15px;">📺 Daftar Episode</h2>
+            <div class="episode-list">${episodeHtml}</div>
+        `;
+        document.querySelector(".content-wrapper").appendChild(epSection);
     }
 }
 

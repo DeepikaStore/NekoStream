@@ -48,11 +48,11 @@ async function loadHomeData() {
             latestList.appendChild(createAnimeCard(anime, false, i));
         });
 
-    } catch (err) {
-        console.error(err);
-        heroSection.innerHTML = `<p class="error" style="padding:20px;">Gagal memuat data.</p>`;
-        trendingList.innerHTML = `<p class="error">Gagal memuat data.</p>`;
-        latestList.innerHTML = `<p class="error">Gagal memuat data.</p>`;
+  // Di dalam loadHomeData() catch block:
+} catch (err) {
+    console.error(err);
+    // Kalau API mati / network error, lempar ke halaman error
+    window.location.href = `404.html?code=api`; 
     }
 }
 

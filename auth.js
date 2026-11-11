@@ -4,6 +4,26 @@ function getUsers() {
     return JSON.parse(localStorage.getItem('neko_users')) || [];
 }
 
+function loginWithGoogle() {
+  auth.signInWithPopup(provider)
+    .then((result) => {
+      const user = result.user;
+      // Simpan session lokal agar UI topbar berubah
+      localStorage.setItem('neko_session', JSON.stringify({
+        username: user.displayName || user.email,
+        email: user.email,
+        photoURL: user.photoURL,
+        uid: user.uid,
+        loginAt: Date.now()
+      }));
+      window.location.href = 'index.html';
+    })
+    .catch((error) => {
+      console.error("Google login error:", error.code, error.message);
+      alert("Gagal login dengan Google: " + error.message);
+    });
+}
+
 function registerUser(username, password) {
     const users = getUsers();
     const userExists = users.find(u => u.username.toLowerCase() === username.toLowerCase());

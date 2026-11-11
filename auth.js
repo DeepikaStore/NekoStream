@@ -33,11 +33,27 @@ function loginUser(username, password) {
 function getSession() {
     return JSON.parse(localStorage.getItem('neko_session'));
 }
+// Inisialisasi Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCy6_D_EZxAFeZ-iZe9SkJjORvIQWNhgT4",
+  authDomain: "nekostream-nexora.firebaseapp.com",
+  projectId: "nekostream-nexora",
+  storageBucket: "nekostream-nexora.firebasestorage.app",
+  messagingSenderId: "1091365553729",
+  appId: "1:1091365553729:web:ecb51e37a9680d7fa4a8c0",
+};
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+const auth = firebase.auth(); {
+const provider = new firebase.auth.GoogleAuthProvider();
+}
 function logoutUser() {
     localStorage.removeItem('neko_session');
     window.location.href = 'index.html';
 }
+
 
 // Fungsi buat update UI Topbar kalau user udah login
 function checkLoginState() {

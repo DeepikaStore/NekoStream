@@ -15,13 +15,29 @@
     </header>
 
     <main class="container">
+        <!-- SEARCH BAR -->
+        <div class="search-bar-container">
+            <form action="search.html" method="GET" class="search-form">
+                <input type="text" name="q" placeholder="Mau nonton anime apa hari ini?" required>
+                <button type="submit">🔍 Cari</button>
+            </form>
+        </div>
+
+        <!-- LANJUT NONTON (HISTORY) -->
+        <section id="history-section" style="display: none;">
+            <h2>🕒 Lanjut Nonton</h2>
+            <div id="history-list" class="anime-grid"></div>
+        </section>
+
+        <!-- PALING POPULER -->
         <section id="popular-section">
-            <h2>🔥 Populer Hari Ini</h2>
+            <h2>🔥 Paling Populer</h2>
             <div id="popular-list" class="anime-grid">
                 <p class="loading">Memuat data...</p>
             </div>
         </section>
 
+        <!-- RILIS TERBARU -->
         <section id="latest-section">
             <h2>🆕 Rilis Terbaru</h2>
             <div id="latest-list" class="anime-grid">
@@ -32,9 +48,7 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 NekoStream.</p>
-        </div>
+        <div class="container"><p>&copy; 2026 NekoStream.</p></div>
     </footer>
 
     <script src="config.js"></script>

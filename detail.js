@@ -32,13 +32,19 @@ function renderDetail(data) {
     const released = anime.released || anime.aired || anime.releaseDate || "-";
 
     let genres = anime.genres || anime.genreList || anime.genre || [];
-    if (typeof genres === "string") genres = genres.split(",").map(g => g.trim());
-    if (!Array.isArray(genres)) genres = [];
+if (typeof genres === "string") genres = genres.split(",").map(g => g.trim());
+if (!Array.isArray(genres)) genres = [];
 
-    const genreHtml = genres.map(g => {
-        const name = typeof g === "string" ? g : (g.name || g.title || "-");
-        return `<span>${name}</span>`;
-    }).join("") || "<span>-</span>";
+const genreHtml = genres.map(g => {
+    // Handle kalau datanya object (misal: {name: "Action", id: 1})
+    let name = "-";
+    if (typeof g === "string") {
+        name = g;
+    } else if (typeof g === "object" && g !== null) {
+        name = g.name || g.title || g.genre || "-";
+    }
+    return `<span>${name}</span>`;
+}).join("") || "<span>-</span>";
 
     let episodes = anime.episodes || anime.episodeList || anime.episode_list || [];
     if (!Array.isArray(episodes)) episodes = [];

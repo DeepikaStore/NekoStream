@@ -25,6 +25,12 @@
                 <label>Password</label>
                 <input type="password" id="login-password" required placeholder="Masukkan password...">
             </div>
+            <div class="auth-divider"><span>atau</span></div>
+
+<button type="button" class="google-btn" onclick="loginWithGoogle()">
+  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="18">
+  Masuk dengan Google
+</button>
             <div id="login-error" class="auth-error"></div>
             <button type="submit" class="auth-btn">Masuk</button>
         </form>

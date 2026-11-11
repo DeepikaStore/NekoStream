@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - NekoStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Selamat Datang!</h1>
+            <p>Masuk buat lanjutin streaming anime favorit lo.</p>
+        </div>
+        
+        <form id="login-form">
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="login-username" required placeholder="Masukkan username...">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="login-password" required placeholder="Masukkan password...">
+            </div>
+            <div id="login-error" class="auth-error"></div>
+            <button type="submit" class="auth-btn">Masuk</button>
+        </form>
+
+        <div class="auth-footer">
+            Belum punya akun? <a href="register.html">Daftar di sini</a>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            const errorEl = document.getElementById('login-error');
+
+            const result = loginUser(username, password);
+            if (result.success) {
+                window.location.href = 'index.html';
+            } else {
+                errorEl.textContent = result.message;
+            }
+        });
+    </script>
+</body>
+</html>

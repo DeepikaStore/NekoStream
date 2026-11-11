@@ -89,6 +89,16 @@ function logoutUser() {
     localStorage.removeItem('neko_session');
     window.location.href = 'index.html';
 }
+// Event listener buat tombol Google
+document.addEventListener('DOMContentLoaded', () => {
+    const btnGoogle = document.getElementById('btn-google');
+    if (btnGoogle) {
+        btnGoogle.addEventListener('click', (e) => {
+            e.preventDefault(); // Mencegah form ke-submit
+            loginWithGoogle();
+        });
+    }
+});
 
 
 // Fungsi buat update UI Topbar kalau user udah login

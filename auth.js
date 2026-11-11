@@ -22,8 +22,17 @@ const provider = new firebase.auth.GoogleAuthProvider();
 
 // Fungsi Login Google
 function loginWithGoogle() {
-  auth.signInWithRedirect(provider)
+  console.log("Tombol Google diklik, mencoba membuka popup...");
+  
+  // Cek apakah Firebase udah siap
+  if (typeof firebase === 'undefined') {
+      alert("Error: Firebase SDK belum diload di HTML!");
+      return;
+  }
+
+  auth.signInWithPopup(provider)
     .then((result) => {
+      console.log("Login Sukses:", result.user);
       const user = result.user;
       localStorage.setItem('neko_session', JSON.stringify({
         username: user.displayName || user.email,
@@ -35,8 +44,9 @@ function loginWithGoogle() {
       window.location.href = 'index.html';
     })
     .catch((error) => {
-      console.error("Google login error:", error.code, error.message);
-      alert("Gagal login dengan Google: " + error.message);
+      console.error("Detail Error:", error);
+      // Munculin popup alert biar lo tau error aslinya
+      alert("Gagal Login: " + error.code + "\n" + error.message); 
     });
 }
 

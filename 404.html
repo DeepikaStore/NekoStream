@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - NekoStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="error-body">
+    
+    <!-- Topbar Simple -->
+    <header class="topbar" style="justify-content: center; background: transparent; border: none; padding-top: 30px;">
+        <div class="mobile-logo" style="display: flex;">
+            <img src="logo.png" alt="NekoStream" class="mobile-logo-img" onerror="this.style.display='none'">
+            <span style="font-size: 1.5rem; font-weight: 700; margin-left: 10px;">NekoStream</span>
+        </div>
+    </header>
+
+    <main class="error-wrapper">
+        <div class="error-card">
+            <!-- KIRI: Gambar -->
+            <div class="error-image-container">
+                <img src="error-girl.png" alt="Error 404" class="error-img">
+            </div>
+
+            <!-- KANAN: Teks & Tombol -->
+            <div class="error-content">
+                <h1 class="error-title"><span class="error-icon">⚠️</span> Oops!</h1>
+                <h2 class="error-subtitle" id="err-subtitle">Terjadi Kesalahan</h2>
+                <p class="error-desc" id="err-desc">
+                    Maaf, halaman yang kamu cari tidak dapat dimuat. Mungkin terjadi kesalahan pada server, atau koneksi internet kamu.
+                </p>
+
+                <div class="error-actions">
+                    <a href="index.html" class="btn-primary" style="padding: 12px 24px; border-radius: 30px; font-weight: 600; text-decoration: none;">
+                        🏠 Kembali ke Beranda
+                    </a>
+                    <button onclick="location.reload()" class="btn-outline" style="padding: 12px 24px; border-radius: 30px; font-weight: 600;">
+                        🔄 Coba Lagi
+                    </button>
+                </div>
+
+                <div class="error-suggestion">
+                    <div class="suggestion-icon">💡</div>
+                    <div>
+                        <span class="suggestion-title">Saran:</span>
+                        <p id="err-suggestion">Periksa koneksi internet kamu, atau coba lagi beberapa saat nanti.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Logika buat nentuin pesan error berdasarkan URL
+        // Contoh pemanggilan: 404.html?code=500
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorCode = urlParams.get('code') || '404';
+
+        const subtitleEl = document.getElementById('err-subtitle');
+        const descEl = document.getElementById('err-desc');
+        const suggestionEl = document.getElementById('err-suggestion');
+
+        const errorMessages = {
+            '404': {
+                title: '404 Not Found',
+                desc: 'Halaman yang kamu cari tidak ditemukan. Mungkin link-nya salah atau udah dihapus.',
+                saran: 'Cek kembali URL yang kamu ketik, atau kembali ke Beranda.'
+            },
+            '403': {
+                title: '403 Forbidden',
+                desc: 'Akses ditolak oleh server atau API. Kamu nggak punya izin buat mengakses halaman ini.',
+                saran: 'Pastikan kamu nggak pakai VPN/Adblock yang bikin API nolak koneksi.'
+            },
+            '500': {
+                title: '500 Internal Server Error',
+                desc: 'Server mengalami gangguan. API anime yang kita pakai mungkin sedang down atau maintenance.',
+                saran: 'Tunggu beberapa menit lalu klik "Coba Lagi".'
+            },
+            '503': {
+                title: '503 Service Unavailable',
+                desc: 'Layanan sedang tidak tersedia. Server kita atau server API lagi kepenuhan (overload).',
+                saran: 'Coba lagi nanti pas jam-jam sepi.'
+            },
+            'network': {
+                title: 'Network Error',
+                desc: 'Koneksi internet kamu bermasalah. Gagal menghubungi server NekoStream.',
+                saran: 'Cek kuota atau sinyal HP/WiFi kamu, terus refresh halaman ini.'
+            },
+            'api': {
+                title: 'API Error',
+                desc: 'API anime gagal mengambil data. Sumber datanya (Oploverz) mungkin lagi error atau di-banned.',
+                saran: 'Ini bukan salah kamu. Coba lagi beberapa saat lagi ya!'
+            }
+        };
+
+        // Set teks berdasarkan kode error
+        if (errorMessages[errorCode]) {
+            subtitleEl.textContent = errorMessages[errorCode].title;
+            descEl.textContent = errorMessages[errorCode].desc;
+            suggestionEl.textContent = errorMessages[errorCode].saran;
+        }
+    </script>
+</body>
+</html>

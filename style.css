@@ -183,6 +183,50 @@ body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hi
     border-radius: 8px; font-weight: 600; cursor: pointer; margin-left: auto;
 }
 
+/* --- STYLE UNTUK LOGO GAMBAR BARU --- */
+
+/* Logo di Sidebar Desktop */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    text-decoration: none; /* Biar nggak ada garis bawah link */
+}
+
+.desktop-logo {
+    width: 100%;
+    max-width: 220px; /* Ukuran maksimal logo di sidebar */
+    height: auto;
+    object-fit: contain;
+    /* Tambahan glow ungu tipis biar makin menyatu sama tema */
+    filter: drop-shadow(0px 0px 10px rgba(138, 43, 226, 0.4)); 
+}
+
+/* Logo di Topbar Mobile */
+.mobile-logo {
+    display: none; /* Default hidden di desktop */
+    align-items: center;
+    text-decoration: none;
+}
+
+.mobile-logo-img {
+    height: 35px; /* Tinggi logo pas di HP */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Responsive: Panggil logo mobile pas layar kecil */
+@media (max-width: 1024px) {
+    .mobile-logo {
+        display: flex;
+    }
+    
+    /* Sembunyiin logo sidebar karena sidebar-nya ilang di HP */
+    .desktop-logo {
+        display: none; 
+    }
+}
+
 /* SKELETON */
 .skeleton {
     background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-hover) 50%, var(--bg-card) 75%);

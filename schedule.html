@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="app-layout">
-        <!-- (Copy paste SIDEBAR dari index.html, ubah active ke Jadwal) -->
         <aside class="sidebar">
             <div class="logo"><span class="logo-icon">🐱</span><div><h1>NekoStream</h1><p>Nonton Anime, Lebih Seru!</p></div></div>
             <nav class="side-menu">
@@ -26,17 +25,27 @@
         <main class="main-content">
             <header class="topbar">
                 <div class="mobile-logo"><span class="logo-icon">🐱</span> NekoStream</div>
-                <div class="top-actions"><button class="login-btn">👤 Masuk</button></div>
             </header>
+
             <div class="content-wrapper">
-                <h2 style="margin-bottom: 20px;">📅 Jadwal Rilis Anime</h2>
+                <div class="section-header">
+                    <h2>📅 Jadwal Rilis Anime</h2>
+                </div>
                 <div id="schedule-container">
                     <p class="loading">Memuat jadwal...</p>
                 </div>
             </div>
         </main>
     </div>
-    <!-- (Copy paste BOTTOM NAV dari index.html) -->
+
+    <nav class="bottom-nav">
+        <a href="index.html"><span>🏠</span>Beranda</a>
+        <a href="search.html"><span>🎬</span>Anime</a>
+        <a href="favorites.html"><span>❤️</span>Favorit</a>
+        <a href="history.html"><span>🕒</span>Riwayat</a>
+        <a href="top10.html"><span>☰</span>Menu</a>
+    </nav>
+
     <script src="config.js"></script>
     <script src="schedule.js"></script>
 </body>

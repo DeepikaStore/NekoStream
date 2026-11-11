@@ -56,6 +56,33 @@ body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hi
 /* --- MAIN CONTENT --- */
 .main-content { flex: 1; margin-left: 260px; display: flex; flex-direction: column; }
 
+/* Grid Genre */
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.genre-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 14px 10px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.genre-card:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
 /* TOPBAR */
 .topbar {
     display: flex; align-items: center; justify-content: space-between; padding: 20px 40px;

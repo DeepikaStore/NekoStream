@@ -4,11 +4,27 @@ function getUsers() {
     return JSON.parse(localStorage.getItem('neko_users')) || [];
 }
 
+// Inisialisasi Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCy6_D_EZxAFeZ-iZe9SkJjORvIQWNhgT4",
+  authDomain: "nekostream-nexora.firebaseapp.com",
+  projectId: "nekostream-nexora",
+  storageBucket: "nekostream-nexora.firebasestorage.app",
+  messagingSenderId: "1091365553729",
+  appId: "1:1091365553729:web:ecb51e37a9680d7fa4a8c0"
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
+
+// Fungsi Login Google
 function loginWithGoogle() {
   auth.signInWithPopup(provider)
     .then((result) => {
       const user = result.user;
-      // Simpan session lokal agar UI topbar berubah
       localStorage.setItem('neko_session', JSON.stringify({
         username: user.displayName || user.email,
         email: user.email,

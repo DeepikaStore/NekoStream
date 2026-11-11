@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Anime - NekoStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="logo"><span class="logo-icon">🐱</span><div><h1>NekoStream</h1><p>Nonton Anime, Lebih Seru!</p></div></div>
+            <nav class="side-menu">
+                <a href="index.html"><span>🏠</span> Beranda</a>
+                <a href="search.html"><span>🎬</span> Anime</a>
+                <a href="search.html"><span>🗂️</span> Genre</a>
+                <a href="schedule.html"><span>📅</span> Jadwal Rilis</a>
+                <a href="top10.html" class="active"><span>🏆</span> Top 10</a>
+                <a href="favorites.html"><span>❤️</span> Favorit</a>
+                <a href="history.html"><span>🕒</span> Riwayat</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="mobile-logo"><span class="logo-icon">🐱</span> NekoStream</div>
+            </header>
+
+            <div class="content-wrapper" style="max-width: 800px;">
+                <div class="section-header">
+                    <h2>🏆 Top 10 Populer Hari Ini</h2>
+                </div>
+                <div id="top10-container" class="top10-list">
+                    <p class="loading">Memuat data...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="index.html"><span>🏠</span>Beranda</a>
+        <a href="search.html"><span>🎬</span>Anime</a>
+        <a href="favorites.html"><span>❤️</span>Favorit</a>
+        <a href="history.html"><span>🕒</span>Riwayat</a>
+        <a href="top10.html" class="active"><span>☰</span>Menu</a>
+    </nav>
+
+    <script src="config.js"></script>
+    <script src="top10.js"></script>
+</body>
+</html>

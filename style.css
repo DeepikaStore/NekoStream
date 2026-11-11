@@ -293,3 +293,75 @@ footer {
     .anime-detail { grid-template-columns: 1fr; padding: 16px; }
     .anime-detail img { max-width: 200px; margin: 0 auto; }
     }
+
+/* Tambahkan di bagian paling bawah style.css */
+
+/* Search Bar */
+.search-bar-container {
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #2a2a3e;
+    background-color: #1a1a2e;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.search-form input:focus {
+    border-color: #e94560;
+}
+
+.search-form button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #e94560;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.search-form button:hover {
+    background-color: #c7334b;
+}
+
+/* Grid Genre */
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.genre-card {
+    background-color: #1a1a2e;
+    border: 1px solid #2a2a3e;
+    padding: 14px 10px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.genre-card:hover {
+    background-color: #e94560;
+    border-color: #e94560;
+    color: #fff;
+    transform: translateY(-3px);
+}

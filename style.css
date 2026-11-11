@@ -18,6 +18,97 @@ body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hi
 /* --- LAYOUT --- */
 .app-layout { display: flex; min-height: 100vh; }
 
+/* --- STYLE ANNOUNCEMENT (PENGUMUMAN) --- */
+
+/* Overlay Gelap */
+.ann-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+/* Card Pop-up */
+.ann-popup-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(138, 43, 226, 0.4);
+    animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Header Pop-up */
+.ann-popup-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ann-popup-header h2 {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* Body Pop-up */
+.ann-popup-body {
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Item Pop-up (Yang muncul pertama kali) */
+.ann-item-popup {
+    background-color: var(--bg-sidebar);
+    padding: 15px;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary);
+}
+.ann-item-popup h3 { font-size: 1rem; margin-bottom: 8px; color: var(--primary); }
+.ann-item-popup p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 10px; }
+.ann-date { font-size: 0.7rem; color: #666; display: block; }
+
+/* Item List Modal (Di dalam ikon lonceng) */
+.ann-list-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-sidebar);
+    border: 1px solid transparent;
+}
+.ann-list-item.unread {
+    border-color: var(--primary);
+    background-color: rgba(138, 43, 226, 0.1);
+}
+.ann-icon { font-size: 1.5rem; }
+.ann-text h4 { font-size: 0.95rem; margin-bottom: 4px; color: var(--text-main); }
+.ann-text p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 8px; }
+
+/* Tombol Close Bawah */
+.ann-popup-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
 .google-btn {
   width: 100%;
   padding: 12px;

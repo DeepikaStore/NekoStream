@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Rilis - NekoStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- (Copy paste SIDEBAR dari index.html, ubah active ke Jadwal) -->
+        <aside class="sidebar">
+            <div class="logo"><span class="logo-icon">🐱</span><div><h1>NekoStream</h1><p>Nonton Anime, Lebih Seru!</p></div></div>
+            <nav class="side-menu">
+                <a href="index.html"><span>🏠</span> Beranda</a>
+                <a href="search.html"><span>🎬</span> Anime</a>
+                <a href="search.html"><span>🗂️</span> Genre</a>
+                <a href="schedule.html" class="active"><span>📅</span> Jadwal Rilis</a>
+                <a href="top10.html"><span>🏆</span> Top 10</a>
+                <a href="favorites.html"><span>❤️</span> Favorit</a>
+                <a href="history.html"><span>🕒</span> Riwayat</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="mobile-logo"><span class="logo-icon">🐱</span> NekoStream</div>
+                <div class="top-actions"><button class="login-btn">👤 Masuk</button></div>
+            </header>
+            <div class="content-wrapper">
+                <h2 style="margin-bottom: 20px;">📅 Jadwal Rilis Anime</h2>
+                <div id="schedule-container">
+                    <p class="loading">Memuat jadwal...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- (Copy paste BOTTOM NAV dari index.html) -->
+    <script src="config.js"></script>
+    <script src="schedule.js"></script>
+</body>
+</html>

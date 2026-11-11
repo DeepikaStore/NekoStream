@@ -3,53 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NekoStream - Home</title>
+    <title>NekoStream - Nonton Anime, Lebih Seru!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1><a href="index.html">🐱 NekoStream</a></h1>
-            <p>Streaming Anime Sub Indo Gratis</p>
-        </div>
-    </header>
-
-    <main class="container">
-        <!-- SEARCH BAR -->
-        <div class="search-bar-container">
-            <form action="search.html" method="GET" class="search-form">
-                <input type="text" name="q" placeholder="Mau nonton anime apa hari ini?" required>
-                <button type="submit">🔍 Cari</button>
-            </form>
-        </div>
-
-        <!-- LANJUT NONTON (HISTORY) -->
-        <section id="history-section" style="display: none;">
-            <h2>🕒 Lanjut Nonton</h2>
-            <div id="history-list" class="anime-grid"></div>
-        </section>
-
-        <!-- PALING POPULER -->
-        <section id="popular-section">
-            <h2>🔥 Paling Populer</h2>
-            <div id="popular-list" class="anime-grid">
-                <p class="loading">Memuat data...</p>
+    <div class="app-layout">
+        <!-- SIDEBAR (DESKTOP) -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🐱</span>
+                <div>
+                    <h1>NekoStream</h1>
+                    <p>Nonton Anime, Lebih Seru!</p>
+                </div>
             </div>
-        </section>
 
-        <!-- RILIS TERBARU -->
-        <section id="latest-section">
-            <h2>🆕 Rilis Terbaru</h2>
-            <div id="latest-list" class="anime-grid">
-                <p class="loading">Memuat data...</p>
+            <nav class="side-menu">
+                <a href="index.html" class="active"><span>🏠</span> Beranda</a>
+                <a href="search.html"><span>🎬</span> Anime</a>
+                <a href="search.html"><span>🗂️</span> Genre</a>
+                <a href="#"><span>📅</span> Jadwal Rilis</a>
+                <a href="#"><span>🏆</span> Top 10</a>
+                <a href="#"><span>❤️</span> Favorit</a>
+                <a href="#"><span>🕒</span> Riwayat</a>
+            </nav>
+
+            <div class="premium-card">
+                <h3>👑 NekoStream Premium</h3>
+                <p>Nikmati pengalaman menonton tanpa iklan!</p>
+                <button>Upgrade Sekarang →</button>
             </div>
-            <div id="pagination" class="pagination"></div>
-        </section>
-    </main>
+        </aside>
 
-    <footer>
-        <div class="container"><p>&copy; 2026 NekoStream.</p></div>
-    </footer>
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="mobile-logo">
+                    <span class="logo-icon">🐱</span> NekoStream
+                </div>
+                <form action="search.html" method="GET" class="search-form">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" name="q" placeholder="Cari anime favoritmu... (Contoh: One Piece)" required>
+                </form>
+                <div class="top-actions">
+                    <button class="icon-btn">🔔<span class="badge">3</span></button>
+                    <button class="login-btn">👤 Masuk / Daftar</button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- HERO SECTION -->
+                <section class="hero-section" id="hero-section">
+                    <!-- Diisi via JS -->
+                    <div class="hero-skeleton"></div>
+                </section>
+
+                <!-- ANIME TRENDING -->
+                <section class="section-container">
+                    <div class="section-header">
+                        <h2>🔥 Anime Trending</h2>
+                        <a href="search.html">Lihat Semua →</a>
+                    </div>
+                    <div class="trending-grid" id="trending-list">
+                        <!-- Diisi via JS -->
+                    </div>
+                </section>
+
+                <!-- ANIME TERBARU -->
+                <section class="section-container">
+                    <div class="section-header">
+                        <h2>⭐ Anime Terbaru</h2>
+                        <a href="search.html">Lihat Semua →</a>
+                    </div>
+                    
+                    <!-- FILTER BAR (UI Only) -->
+                    <div class="filter-bar">
+                        <select><option>Semua Genre</option></select>
+                        <select><option>Semua Tahun</option></select>
+                        <select><option>Semua Status</option></select>
+                        <button class="filter-btn">Cari Anime →</button>
+                    </div>
+
+                    <div class="anime-grid" id="latest-list">
+                        <!-- Diisi via JS -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- BOTTOM NAV (MOBILE) -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="active"><span>🏠</span>Beranda</a>
+        <a href="search.html"><span>🎬</span>Anime</a>
+        <a href="#"><span>❤️</span>Favorit</a>
+        <a href="#"><span>🕒</span>Riwayat</a>
+        <a href="#"><span>☰</span>Menu</a>
+    </nav>
 
     <script src="config.js"></script>
     <script src="home.js"></script>

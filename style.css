@@ -18,6 +18,42 @@ body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hi
 /* --- LAYOUT --- */
 .app-layout { display: flex; min-height: 100vh; }
 
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  background: #fff;
+  color: #333;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+.google-btn:hover { background: #f1f1f1; }
+
+.auth-divider {
+  text-align: center;
+  margin: 20px 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  position: relative;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: var(--border-color);
+}
+.auth-divider::before { left: 0; }
+.auth-divider::after { right: 0; }
+
 /* --- STYLE AUTH (LOGIN & REGISTER) --- */
 .auth-body {
     background-color: var(--bg-dark);

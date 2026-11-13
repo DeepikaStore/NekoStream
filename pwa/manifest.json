@@ -79,7 +79,7 @@
     },
     {
       "src": "screenshots/ss-desktop.png",
-      "sizes": "1920x1080",
+      "sizes": "1896x907",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Tampilan Beranda NekoStream di Desktop"

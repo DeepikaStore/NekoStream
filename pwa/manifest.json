@@ -1,6 +1,6 @@
 {
-    "name": "App Name",
-    "short_name": "App Short Name", 
+    "name": "NekoStream",
+    "short_name": "NekoStream", 
     "start_url": "/", 
     "display": "standalone", 
     "background_color": "#ffffff", 

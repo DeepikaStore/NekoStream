@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NekoStream - Nonton Anime, Lebih Seru!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="pwa/pwa.js" defer></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR (DESKTOP) -->
+        <aside class="sidebar">
+            <a href="index.html" class="logo">
+    <img src="logo.png" alt="NekoStream Logo" class="desktop-logo">
+            </a>
+
+            <nav class="side-menu">
+                <a href="index.html" class="active"><span>🏠</span> Beranda</a>
+                <a href="search.html"><span>🎬</span> Anime</a>
+                <a href="search.html"><span>🗂️</span> Genre</a>
+                <a href="schedule.html"><span>📅</span> Jadwal Rilis</a>
+                <a href="top10.html"><span>🏆</span> Top 10</a>
+                <a href="favorite.html"><span>❤️</span> Favorit</a>
+                <a href="history.html"><span>🕒</span> Riwayat</a>
+            </nav>
+
+            <div class="premium-card">
+                <h3>👑 NekoStream Premium</h3>
+                <p>Nikmati pengalaman menonton tanpa iklan!</p>
+                <button>Upgrade Sekarang →</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <a href="index.html" class="mobile-logo">
+    <img src="logo.png" alt="NekoStream Logo" class="mobile-logo-img">
+                </a>
+                <form action="search.html" method="GET" class="search-form">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" name="q" placeholder="Cari anime favoritmu... (Contoh: One Piece)" required>
+                </form>
+                <div class="top-actions">
+                    <button class="icon-btn" id="btn-bell">🔔<span class="badge" id="bell-badge" style="display:none;">0</span></button>
+                    <a href="login.html" class="login-btn" style="text-decoration: none; display: inline-block;">👤 Masuk / Daftar</a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- HERO SECTION -->
+                <section class="hero-section" id="hero-section">
+                    <div class="hero-skeleton skeleton"></div>
+                </section>
+
+                <!-- ANIME TRENDING -->
+                <section class="section-container">
+                    <div class="section-header">
+                        <h2>🔥 Anime Trending</h2>
+                        <a href="search.html">Lihat Semua →</a>
+                    </div>
+                    <div class="trending-grid" id="trending-list">
+                        <!-- Diisi via JS -->
+                    </div>
+                </section>
+
+                <!-- ANIME TERBARU -->
+                <section class="section-container">
+                    <div class="section-header">
+                        <h2>⭐ Anime Terbaru</h2>
+                        <a href="search.html">Lihat Semua →</a>
+                    </div>
+                    
+                    <!-- FILTER BAR -->
+                    <div class="filter-bar">
+                        <select id="filter-genre">
+                            <option value="">Semua Genre</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="drama">Drama</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="romance">Romance</option>
+                        </select>
+                        <select id="filter-status">
+                            <option value="">Semua Status</option>
+                            <option value="ongoing">Ongoing</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <button class="filter-btn" onclick="applyFilter()">Cari Anime →</button>
+                    </div>
+
+                    <div class="anime-grid" id="latest-list">
+                        <!-- Diisi via JS -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- BOTTOM NAV (MOBILE) -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="active"><span>🏠</span>Beranda</a>
+        <a href="search.html"><span>🎬</span>Anime</a>
+        <a href="favorite.html"><span>❤️</span>Favorit</a>
+        <a href="history.html"><span>🕒</span>Riwayat</a>
+        <a href="top10.html"><span>☰</span>Menu</a>
+    </nav>
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script src="home.js"></script>
+    <script src="announcement.js"></script>
+</body>
+</html>

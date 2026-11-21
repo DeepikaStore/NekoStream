@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cari Anime - NekoStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🐱</span>
+                <div>
+                    <h1>NekoStream</h1>
+                    <p>Nonton Anime, Lebih Seru!</p>
+                </div>
+            </div>
+            <nav class="side-menu">
+                <a href="index.html"><span>🏠</span> Beranda</a>
+                <a href="search.html" class="active"><span>🎬</span> Anime</a>
+                <a href="search.html"><span>🗂️</span> Genre</a>
+                <a href="schedule.html"><span>📅</span> Jadwal Rilis</a>
+                <a href="top10.html"><span>🏆</span> Top 10</a>
+                <a href="favorite.html"><span>❤️</span> Favorit</a>
+                <a href="history.html"><span>🕒</span> Riwayat</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="mobile-logo">
+                    <span class="logo-icon">🐱</span> NekoStream
+                </div>
+                <form id="search-form" class="search-form">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Cari judul anime..." required>
+                </form>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- SECTION GENRE -->
+                <section id="genre-section">
+                    <div class="section-header">
+                        <h2>🗂️ Kategori Genre</h2>
+                    </div>
+                    <div id="genre-list" class="genre-grid">
+                        <p class="loading">Memuat genre...</p>
+                    </div>
+                </section>
+
+                <!-- SECTION HASIL -->
+                <section id="result-section" style="margin-top: 40px;">
+                    <div class="section-header">
+                        <h2 id="result-title">🆕 Rilis Terbaru</h2>
+                    </div>
+                    <div id="result-list" class="anime-grid">
+                        <p class="loading">Memuat anime...</p>
+                    </div>
+                    <div id="search-pagination" class="pagination"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <a href="index.html"><span>🏠</span>Beranda</a>
+        <a href="search.html" class="active"><span>🎬</span>Anime</a>
+        <a href="favorite.html"><span>❤️</span>Favorit</a>
+        <a href="history.html"><span>🕒</span>Riwayat</a>
+        <a href="top10.html"><span>☰</span>Menu</a>
+    </nav>
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+</body>
+</html>
